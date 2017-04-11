@@ -1,6 +1,9 @@
 package progproblem;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.PriorityQueue;
 
 import org.junit.experimental.max.MaxCore;
 
@@ -64,5 +67,58 @@ public class ProblemSets {
 			}
 		}
 		return matchTable[firstLength][secondLength];
+	}
+	
+	public int[] maxLengthSubArrayGivenSum(int[] numbers, int sum) {
+		if(null == numbers || numbers.length == 0) {
+			return new int[0];
+		}
+		
+		HashMap<Integer, Integer> sumMap = new HashMap<>();
+		sumMap.put(0, -1);
+		int maxLen = 0;
+		int sumSoFar = 0;
+		int length = numbers.length;
+		int endIndex = length - 1;
+		for(int i = 0; i < length; ++i) {
+			sumSoFar += numbers[i];
+			
+			if(!sumMap.containsKey(sumSoFar)) {
+				sumMap.put(sumSoFar, i);
+			}
+			
+			if(sumMap.containsKey(sumSoFar - sum)) {
+				endIndex = i;
+				maxLen = Math.max(maxLen, i - sumMap.get(sumSoFar - sum));
+			}
+		}
+		
+		int[] maxSubArray = new int[maxLen];
+		int k = 0;
+		for(int i = endIndex; i > endIndex - maxLen; --i) {
+			maxSubArray[maxLen - k - 1] = numbers[i];
+			k++;
+		}
+		
+		return maxSubArray;
+	}
+	
+	public int getKthLargestElement(int[] numbers, int k) {
+		if(null == numbers || numbers.length == 0) {
+			return -1;
+		}
+		
+		int length = numbers.length;
+		PriorityQueue<Integer> numbersQueue = new PriorityQueue<>(Collections.reverseOrder());
+		for(int i = 0; i<length; ++i) {
+			numbersQueue.add(numbers[i]);
+		}
+		
+		for(int i=1; i<k; i++) {
+			numbersQueue.remove();
+		}
+		
+		
+		return numbersQueue.peek();
 	}
 }
