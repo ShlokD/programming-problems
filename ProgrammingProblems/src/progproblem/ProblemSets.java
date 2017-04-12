@@ -1,11 +1,9 @@
 package progproblem;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
-import org.junit.experimental.max.MaxCore;
 
 public class ProblemSets {
 	public int[] pairWithGivenSum(int[] numbers, int sum) {
@@ -120,5 +118,35 @@ public class ProblemSets {
 		
 		
 		return numbersQueue.peek();
+	}
+	
+	public int[] dutchNationalFlagProblem(int[] numbers) {
+		if(null == numbers || numbers.length == 0) {
+			return numbers;
+		}
+		int[] result = numbers;
+		int start = 0;
+		int middle = 0;
+		int end = numbers.length - 1;
+		int check = 1;
+		
+		while(middle <= end) {
+			if(result[middle] < check) {
+				int temp = result[middle];
+				result[middle] = result[start];
+				result[start] = temp;
+				++start;
+				++middle;
+			} else if (result[middle] > check) {
+				int temp = result[middle];
+				result[middle] = result[end];
+				result[end] = temp;
+				--end;
+			} else {
+				++middle;
+			}
+		}
+		
+		return result;
 	}
 }

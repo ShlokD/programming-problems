@@ -2,9 +2,6 @@ package progproblem;
 
 import static org.junit.Assert.*;
 
-import java.nio.channels.Pipe;
-import java.util.function.IntPredicate;
-
 import org.junit.Test;
 
 public class ProblemSetsTest {
@@ -51,6 +48,14 @@ public class ProblemSetsTest {
 		int k = 4;
 		int expectedValue = 4;
 		assertEquals(expectedValue, pSets.getKthLargestElement(numbers, k));
+	}
+	
+	@Test
+	public void dutchNationalFlagProblemTest() {
+		ProblemSets pSets = new ProblemSets();
+		int[] numbers = {2, 0, 1, 2, 0, 0, 1, 2, 1, 1};
+		int[] expected = {0, 0, 0, 1, 1, 1, 1, 2, 2, 2};
+		assertArrayEquals(expected, pSets.dutchNationalFlagProblem(numbers));
 	}
 
 }
