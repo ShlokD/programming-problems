@@ -57,5 +57,13 @@ public class ProblemSetsTest {
 		int[] expected = {0, 0, 0, 1, 1, 1, 1, 2, 2, 2};
 		assertArrayEquals(expected, pSets.dutchNationalFlagProblem(numbers));
 	}
+	
+	@Test
+	public void equilibriumElementTest() {
+		ProblemSets pSets = new ProblemSets();
+		int[] numbers = {1, 2, 3, 4, 3, 2, 1};
+		int expected = 4;
+		assertEquals(expected, pSets.equilibriumElement(numbers));
+	}
 
 }

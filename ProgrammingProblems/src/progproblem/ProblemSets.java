@@ -149,4 +149,27 @@ public class ProblemSets {
 		
 		return result;
 	}
+	
+	public int equilibriumElement(int[] numbers) {
+		int length = numbers.length;
+		if(length == 0) {
+			return -1;
+		}
+		int equilibriumElement = numbers[0];
+		int totalSum = 0;
+		for(int i=0; i<length; ++i) {
+			totalSum += numbers[i];
+		}
+		
+		int rightSum = 0;
+		
+		for(int i = length -1 ; i>=0; --i) {
+			if(rightSum == totalSum - (numbers[i] + rightSum)) {
+				equilibriumElement = numbers[i];
+			}
+			rightSum += numbers[i];
+		}
+		
+		return equilibriumElement;
+	}
 }
