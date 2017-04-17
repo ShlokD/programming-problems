@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+
 
 public class ProblemSets {
 	public int[] pairWithGivenSum(int[] numbers, int sum) {
@@ -171,5 +173,34 @@ public class ProblemSets {
 		}
 		
 		return equilibriumElement;
+	}
+	
+	public boolean isAnagram(String first, String second) {
+		if(first == null || second == null) {
+			return false;
+		}
+		
+		HashMap<Character, Integer> characterCount = new HashMap<>();
+		
+		for(Character c : first.toCharArray()) {
+			if(characterCount.containsKey(c)) {
+				characterCount.put(c, characterCount.get(c) + 1);
+			} else {
+				characterCount.put(c, 1);
+			}
+		}
+		
+		for(Character c: second.toCharArray()) {
+			if(!characterCount.containsKey(c)) {
+				return false;
+			} else {
+				characterCount.put(c, characterCount.get(c) - 1);
+				if(characterCount.get(c) == 0) {
+					characterCount.remove(c);
+				}
+			}
+		}
+		
+		return characterCount.isEmpty();			
 	}
 }

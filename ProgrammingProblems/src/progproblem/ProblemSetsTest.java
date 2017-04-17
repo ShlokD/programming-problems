@@ -65,5 +65,15 @@ public class ProblemSetsTest {
 		int expected = 4;
 		assertEquals(expected, pSets.equilibriumElement(numbers));
 	}
+	
+	@Test
+	public void isAnagramTest() {
+		ProblemSets pSets = new ProblemSets();
+		String first = "motherinlaw";
+		String second = "womanhitler";
+		String third = "ladyhitler";
+		assertEquals(true, pSets.isAnagram(first, second));
+		assertEquals(false, pSets.isAnagram(first, third));
+	}
 
 }
