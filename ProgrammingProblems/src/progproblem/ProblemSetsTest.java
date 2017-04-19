@@ -75,5 +75,13 @@ public class ProblemSetsTest {
 		assertEquals(true, pSets.isAnagram(first, second));
 		assertEquals(false, pSets.isAnagram(first, third));
 	}
+	
+	@Test
+	public void smallestMissingElementTest() {
+		ProblemSets pSets = new ProblemSets();
+		int[] numbers = {0, 1, 2, 5};
+		int expected = 3;
+		assertEquals(expected, pSets.smallestMissingElement(numbers, 0, numbers.length - 1));
+	}
 
 }

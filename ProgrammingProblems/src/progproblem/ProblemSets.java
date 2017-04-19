@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 
 
 public class ProblemSets {
@@ -202,5 +201,22 @@ public class ProblemSets {
 		}
 		
 		return characterCount.isEmpty();			
+	}
+	
+	public int smallestMissingElement(int[] numbers, int low, int high) {
+		if(numbers.length == 0) {
+			return -1;
+		}
+		if(low > high) {
+			return low;
+		}
+		
+		int mid =  low + (high - low) / 2;
+		
+		if(numbers[mid] == mid) {
+			return smallestMissingElement(numbers, mid+1, high);
+		} else {
+			return smallestMissingElement(numbers, low, mid - 1);
+		}
 	}
 }
