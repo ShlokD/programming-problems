@@ -83,5 +83,16 @@ public class ProblemSetsTest {
 		int expected = 3;
 		assertEquals(expected, pSets.smallestMissingElement(numbers, 0, numbers.length - 1));
 	}
+	
+	@Test
+	
+	public void lastOccurenceTest() {
+		ProblemSets pSets = new ProblemSets();
+		int[] numbers = { 1, 2, 2, 2, 2, 3, 5 };
+		int target = 2;
+		int expected = 4;
+		assertEquals(expected, pSets.lastOccurence(numbers, target));
+		assertEquals(-1, pSets.lastOccurence(numbers, 4));
+	}
 
 }

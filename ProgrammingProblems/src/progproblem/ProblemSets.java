@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.PriorityQueue;
 
 
-
 public class ProblemSets {
 	public int[] pairWithGivenSum(int[] numbers, int sum) {
 		int[] result = { -1, -1 };
@@ -218,5 +217,29 @@ public class ProblemSets {
 		} else {
 			return smallestMissingElement(numbers, low, mid - 1);
 		}
+	}
+	
+	public int lastOccurence(int [] numbers, int target) {
+		if (numbers.length == 0) {
+			return -1;
+		}
+		int result = -1;
+		
+		int low = 0;
+		int high = numbers.length - 1;
+		
+		while(low  <= high) {
+			int mid = (low + high) /2;
+			
+			if(numbers[mid] == target) {
+				result = mid;
+				low = mid + 1;
+			} else if (target < numbers[mid] ) {
+				high = mid - 1;
+			} else {
+				low = mid + 1;
+			}
+		}
+		return result;
 	}
 }
