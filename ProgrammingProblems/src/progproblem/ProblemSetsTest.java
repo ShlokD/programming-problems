@@ -1,8 +1,9 @@
 package progproblem;
 
 import static org.junit.Assert.*;
-
+import java.util.Arrays;
 import org.junit.Test;
+
 
 public class ProblemSetsTest {
 
@@ -85,7 +86,6 @@ public class ProblemSetsTest {
 	}
 	
 	@Test
-	
 	public void lastOccurenceTest() {
 		ProblemSets pSets = new ProblemSets();
 		int[] numbers = { 1, 2, 2, 2, 2, 3, 5 };
@@ -93,6 +93,14 @@ public class ProblemSetsTest {
 		int expected = 4;
 		assertEquals(expected, pSets.lastOccurence(numbers, target));
 		assertEquals(-1, pSets.lastOccurence(numbers, 4));
+	}
+	
+	@Test
+	public void fisherYatesShuffle() {
+		ProblemSets pSets = new ProblemSets();
+		int[] numbers = { 1, 2, 3, 4, 5};
+		int[] result = pSets.fisherYatesShuffle(numbers);
+		assertNotEquals(Arrays.toString(result), Arrays.toString(numbers));
 	}
 
 }

@@ -3,6 +3,7 @@ package progproblem;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.PriorityQueue;
+import java.util.Random;
 
 
 public class ProblemSets {
@@ -239,6 +240,19 @@ public class ProblemSets {
 			} else {
 				low = mid + 1;
 			}
+		}
+		return result;
+	}
+	
+	public int[] fisherYatesShuffle(int[] numbers) {
+		int[] result = numbers.clone();
+		Random random = new Random();
+		int length = numbers.length;
+		for(int i = 0; i<=length - 2; ++i) {
+			int j = i + random.nextInt(length - i);
+			int temp = result[i];
+			result[i] = result[j];
+			result[j] = temp;
 		}
 		return result;
 	}
