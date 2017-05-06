@@ -1,7 +1,11 @@
 package progproblem;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
 
@@ -255,5 +259,29 @@ public class ProblemSets {
 			result[j] = temp;
 		}
 		return result;
+	}
+	
+	public String largestNumberFromSet(String[] numbers) {
+		List<String> numbersList = Arrays.asList(numbers);
+		StringBuilder resultBuilder = new StringBuilder();
+		
+		
+		Comparator<String> combinedComparator = new Comparator<String>() {
+			@Override
+			public int compare(String o1, String o2) {
+				Integer combine1 = new Integer(o1 + o2);
+				Integer combine2 = new Integer(o2 + o1);
+				return combine2.compareTo(combine1);
+			}
+		};
+		
+		Collections.sort(numbersList, combinedComparator);
+		
+		
+		for(String s: numbersList) {
+			resultBuilder.append(s);
+		}
+		
+		return resultBuilder.toString();
 	}
 }

@@ -96,11 +96,19 @@ public class ProblemSetsTest {
 	}
 	
 	@Test
-	public void fisherYatesShuffle() {
+	public void fisherYatesShuffleTest() {
 		ProblemSets pSets = new ProblemSets();
 		int[] numbers = { 1, 2, 3, 4, 5};
 		int[] result = pSets.fisherYatesShuffle(numbers);
 		assertNotEquals(Arrays.toString(result), Arrays.toString(numbers));
+	}
+	
+	@Test
+	public void largestNumberFromSetTest() {
+		ProblemSets pSets = new ProblemSets();
+		String[] numbers = {"546", "54", "548", "60"};
+		String expected = "6054854654";
+		assertEquals(expected, pSets.largestNumberFromSet(numbers));
 	}
 
 }
