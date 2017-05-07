@@ -110,5 +110,14 @@ public class ProblemSetsTest {
 		String expected = "6054854654";
 		assertEquals(expected, pSets.largestNumberFromSet(numbers));
 	}
+	
+	@Test
+	public void maxProfitTest() {
+		ProblemSets pSets = new ProblemSets();
+		int[] rates = {1, 5, 2, 3, 7, 6, 4, 5};
+		int expected = 10;
+		int actual = pSets.maxProfit(rates);
+		assertEquals(expected, actual);
+	}
 
 }

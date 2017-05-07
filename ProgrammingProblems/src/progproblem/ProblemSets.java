@@ -1,6 +1,5 @@
 package progproblem;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -283,5 +282,29 @@ public class ProblemSets {
 		}
 		
 		return resultBuilder.toString();
+	}
+	
+	public int maxProfit(int[] rates) {
+		if(rates == null || rates.length == 0) {
+			return 0;
+		}
+		
+		int length = rates.length;
+		int profit = 0;
+		int localMinimum = 0;
+		
+		for(int i = 1; i<length; ++i) {
+			if(rates[i - 1] > rates[i]) {
+				localMinimum = i;
+			}
+			
+			if(rates[i - 1] < rates[i] && ( i + 1 == length || rates[i] > rates[i+1])) {
+				profit += rates[i] - rates[localMinimum];
+				
+			}
+		}
+		return profit;
+		
+		
 	}
 }
