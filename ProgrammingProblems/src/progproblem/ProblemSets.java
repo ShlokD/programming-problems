@@ -304,7 +304,14 @@ public class ProblemSets {
 			}
 		}
 		return profit;
+	}
+	
+	public boolean checkStringDerivation(String first, String second) {
+		if(first == null || second == null){
+			return false;
+		}
 		
-		
+		StringBuilder duplicate = new StringBuilder(first).append(first);
+		return duplicate.indexOf(second) != -1;
 	}
 }

@@ -119,5 +119,16 @@ public class ProblemSetsTest {
 		int actual = pSets.maxProfit(rates);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void stringDerivationTest() {
+		ProblemSets pSets = new ProblemSets();
+		String first = "ABCD";
+		String second = "DABC";
+		String third = "DACB";
+		assertEquals(true, pSets.checkStringDerivation(first, second));
+		assertEquals(false, pSets.checkStringDerivation(first, third));
+		
+	}
 
 }
