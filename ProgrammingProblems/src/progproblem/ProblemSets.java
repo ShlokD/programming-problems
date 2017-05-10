@@ -1,12 +1,15 @@
 package progproblem;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
+import java.util.Set;
 
 
 public class ProblemSets {
@@ -313,5 +316,25 @@ public class ProblemSets {
 		
 		StringBuilder duplicate = new StringBuilder(first).append(first);
 		return duplicate.indexOf(second) != -1;
+	}
+	
+	
+	public Set<TimeActivity> activitySelection(ArrayList<TimeActivity> activityList) {
+		if(activityList.isEmpty()) { 
+			return null; 
+		}
+		
+		LinkedHashSet<TimeActivity> hashSet = new LinkedHashSet<>();
+		hashSet.add(activityList.get(0));
+		int optimalActivityIndex = 0;
+		for(int i = 1; i < activityList.size(); ++i) {
+			TimeActivity currentActivity = activityList.get(i);
+			TimeActivity optimalActivity = activityList.get(optimalActivityIndex);
+			if(currentActivity.getStart() >= optimalActivity.getEnd()) {
+				hashSet.add(currentActivity);
+				optimalActivityIndex = i;
+			}
+		}
+		return hashSet;
 	}
 }

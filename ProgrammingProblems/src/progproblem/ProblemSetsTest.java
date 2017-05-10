@@ -1,7 +1,12 @@
 package progproblem;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import org.junit.Test;
 
 
@@ -127,8 +132,43 @@ public class ProblemSetsTest {
 		String second = "DABC";
 		String third = "DACB";
 		assertEquals(true, pSets.checkStringDerivation(first, second));
-		assertEquals(false, pSets.checkStringDerivation(first, third));
+		assertEquals(false, pSets.checkStringDerivation(first, third));	
+	}
+	
+	public String getActivityString(Set<TimeActivity> activitySet) {
+		StringBuilder activityStringBuilder = new StringBuilder();
+		for(TimeActivity timeActivity: activitySet) {
+			activityStringBuilder.append(timeActivity.toString());
+		}
 		
+		return activityStringBuilder.toString();
+	}
+	
+	
+	@Test
+	public void scheduleActivityTest() {
+		ProblemSets pSets = new ProblemSets();
+		ArrayList<TimeActivity> activities = new ArrayList<>();
+		activities.add(new TimeActivity(1, 4));
+		activities.add(new TimeActivity(3, 5));
+		activities.add(new TimeActivity(0, 6));
+		activities.add(new TimeActivity(5, 7));
+		activities.add(new TimeActivity(3, 8));
+		activities.add(new TimeActivity(5, 9));
+		activities.add(new TimeActivity(6, 10));
+		activities.add(new TimeActivity(8, 11));
+		activities.add(new TimeActivity(8, 12));
+		activities.add(new TimeActivity(2, 13));
+		activities.add(new TimeActivity(12, 14));
+		
+		Set<TimeActivity> expected = new LinkedHashSet<>();
+		expected.add(new TimeActivity(1, 4));
+		expected.add(new TimeActivity(5, 7));
+		expected.add(new TimeActivity(8, 11));
+		expected.add(new TimeActivity(12, 14));
+		
+		Set<TimeActivity> actual = pSets.activitySelection(activities);
+		assertEquals(getActivityString(expected), getActivityString(actual));
 	}
 
 }
