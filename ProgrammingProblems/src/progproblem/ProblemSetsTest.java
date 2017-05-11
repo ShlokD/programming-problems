@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.List;
 
 import org.junit.Test;
-
 
 public class ProblemSetsTest {
 
@@ -169,6 +169,18 @@ public class ProblemSetsTest {
 		
 		Set<TimeActivity> actual = pSets.activitySelection(activities);
 		assertEquals(getActivityString(expected), getActivityString(actual));
+	}
+	
+	@Test
+	public void binaryPermutationsTest() {
+		ProblemSets pSets = new ProblemSets();
+		String argumentString = new String("11?01?");
+		String[] permutations = {"110010", "110011", "111010", "111011"};
+		List<String> expected =  Arrays.asList(permutations);
+		List<String> actual = pSets.binaryPermutations(argumentString);
+		for(String actualString: actual) {
+			assertTrue(expected.contains(actualString));
+		}
 	}
 
 }

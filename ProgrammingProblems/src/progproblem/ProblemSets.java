@@ -6,8 +6,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Random;
 import java.util.Set;
 
@@ -336,5 +338,30 @@ public class ProblemSets {
 			}
 		}
 		return hashSet;
+	}
+
+	public List<String> binaryPermutations(String binaryString) {
+		if(binaryString.isEmpty()) {
+			return null;
+		}
+		ArrayList<String> permutations = new ArrayList<>();
+		Queue<String> stringsQueue = new LinkedList<>();
+		stringsQueue.add(binaryString);
+		while(!stringsQueue.isEmpty()) {
+			String str = stringsQueue.peek();
+			char[] charArray = str.toCharArray();
+			int index = str.indexOf('?');
+			if(index != -1) {
+				charArray[index] = '0';
+				stringsQueue.add(new String(charArray));
+				charArray[index] = '1';
+				stringsQueue.add(new String(charArray));
+				
+			} else {
+				permutations.add(str);
+			}
+			stringsQueue.remove();
+		}
+		return permutations;
 	}
 }
