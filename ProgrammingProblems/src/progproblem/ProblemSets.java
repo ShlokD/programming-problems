@@ -364,4 +364,68 @@ public class ProblemSets {
 		}
 		return permutations;
 	}
+	
+	public int[] generateLPSArray(String text) {
+		if(text.isEmpty()){
+			return null;
+		}
+		int length = text.length();
+		int[] LPSArray = new int[length];
+		LPSArray[0] = 0;
+		
+		int i = 1;
+		int len = 0;
+		
+		while(i < length) {
+			if(text.charAt(i) == text.charAt(len)) {
+				len++;
+				LPSArray[i] = len;
+				i++;
+			} else {
+				if(len != 0) {
+					len  = LPSArray[len - 1];
+				} else {
+					LPSArray[i] = len;
+					i++;
+				}
+			}
+		}
+		
+		return LPSArray;
+	}
+	
+	public int KMPStringMatch(String text, String pattern) {
+		int index = -1;
+		if(text.isEmpty() || pattern.isEmpty()) {
+			return index;
+		}
+		
+		int i = 0;
+		int j = 0;
+		int textLength = text.length();
+		int patternLength = pattern.length();
+		int[] patternSuffixArray = generateLPSArray(pattern);
+		
+		while(i < textLength) {
+			if(pattern.charAt(j) == text.charAt(i)) {
+				i++;
+				j++;
+			}
+			
+			if(j == patternLength) {
+				index = i - j;
+				j = patternSuffixArray[j - 1];
+			}
+			
+			if(i < textLength && pattern.charAt(j) != text.charAt(i)) {
+				if ( j != 0) {
+					j = patternSuffixArray[j - 1];
+				} else {
+					i = i + 1;
+				}
+				
+			}
+		}
+		return index;
+	}
 }

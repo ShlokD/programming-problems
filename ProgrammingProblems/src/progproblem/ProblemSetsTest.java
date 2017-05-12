@@ -182,5 +182,24 @@ public class ProblemSetsTest {
 			assertTrue(expected.contains(actualString));
 		}
 	}
+	
+	@Test
+	public void LPSArrayTest() {
+		ProblemSets pSets = new ProblemSets();
+		String text = "BCAB";
+		int[] expected = new int[]{0, 0, 0, 1};
+		int[] actual = pSets.generateLPSArray(text);
+		assertArrayEquals(expected, actual);
+	}
+	
+	@Test
+	public void KMPStringMatchTest() {
+		ProblemSets pSets = new ProblemSets();
+		String text = "AABCAABCAB";
+		String pattern = "BCAB";
+		int expected = 6;
+		int actual = pSets.KMPStringMatch(text, pattern);
+		assertEquals(expected, actual);
+	}
 
 }
