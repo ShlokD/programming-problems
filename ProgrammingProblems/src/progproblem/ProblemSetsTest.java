@@ -201,5 +201,19 @@ public class ProblemSetsTest {
 		int actual = pSets.KMPStringMatch(text, pattern);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void MemoizedFibonacciTest() {
+		ProblemSets pSets = new ProblemSets();
+		int argument1 = 25;
+		int argument2 = 9;
+		long expected1 = 46368;
+		long actual1 = pSets.getNthFibonacciNumberMemoized(argument1);
+		long expected2 = 34;
+		long actual2 = pSets.getNthFibonacciNumberMemoized(argument2);
+		assertEquals(expected1, actual1);
+		assertEquals(expected2, actual2);
+		
+	}
 
 }

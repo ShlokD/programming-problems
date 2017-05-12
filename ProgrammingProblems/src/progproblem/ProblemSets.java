@@ -15,6 +15,13 @@ import java.util.Set;
 
 
 public class ProblemSets {
+	ArrayList<Long> memoizedFibonnaci;
+	public ProblemSets() {
+		memoizedFibonnaci = new ArrayList<>();
+		memoizedFibonnaci.add(0L);
+		memoizedFibonnaci.add(1L);
+	}
+	
 	public int[] pairWithGivenSum(int[] numbers, int sum) {
 		int[] result = { -1, -1 };
 		HashMap<Integer, Integer> sumMap = new HashMap<>();
@@ -427,5 +434,21 @@ public class ProblemSets {
 			}
 		}
 		return index;
+	}
+	
+	public long getNthFibonacciNumberMemoized(int n) {
+		if( n <= 0 ) {
+			return -1;
+		}
+		
+		if(memoizedFibonnaci.size() >= n - 1 && memoizedFibonnaci.get(n - 1) != 0) {
+			return memoizedFibonnaci.get(n);
+		}
+		
+		for(int i = 2; i <= n - 1; ++i) {
+			long result = memoizedFibonnaci.get(i - 1) + memoizedFibonnaci.get(i - 2);
+			memoizedFibonnaci.add(result);
+		}
+		return memoizedFibonnaci.get(n - 1);	
 	}
 }
