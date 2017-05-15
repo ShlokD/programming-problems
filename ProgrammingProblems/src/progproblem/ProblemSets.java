@@ -451,4 +451,24 @@ public class ProblemSets {
 		}
 		return memoizedFibonnaci.get(n - 1);	
 	}
+	
+	public int sumOfPrimeFactorsPowers(int number) {
+		if (number == 0) { return 0; }
+		
+		int sqrt = (int)Math.sqrt(number);
+		int remain = number; 
+		int result = 0;
+		
+		for(int i = 2; i<=sqrt; ++i) {
+			while(remain % i == 0) {
+				result++;
+				remain /= i;
+			}
+		}
+		
+		if(remain > 1) {
+			result ++;
+		}
+		return result;
+	}
 }

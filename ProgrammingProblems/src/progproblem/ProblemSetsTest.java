@@ -215,5 +215,14 @@ public class ProblemSetsTest {
 		assertEquals(expected2, actual2);
 		
 	}
+	
+	@Test
+	public void SumPrimePowersTest() {
+		ProblemSets pSets = new ProblemSets();
+		int number = 90;
+		int expected = 4;
+		int actual = pSets.sumOfPrimeFactorsPowers(number);
+		assertEquals(expected, actual);
+	}
 
 }
