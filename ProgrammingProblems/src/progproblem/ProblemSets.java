@@ -471,4 +471,29 @@ public class ProblemSets {
 		}
 		return result;
 	}
+	
+	public boolean metaStrings(String s1, String s2) {
+		if(s1.length() != s2.length()) {
+			return false;
+		}
+		
+		int prev = -1;
+		int next = -1;
+		int mismatch = 0;
+		
+		
+		for(int i=0; i<s1.length(); ++i) {
+			if(s1.charAt(i) != s2.charAt(i)) {
+				mismatch++;
+				if(mismatch > 2) {
+					return false;
+				}
+				
+				prev = next;
+				next = i;
+			}
+		}
+		
+		return mismatch == 2 && s1.charAt(prev) == s2.charAt(next) && s1.charAt(next) == s2.charAt(prev);
+	}
 }

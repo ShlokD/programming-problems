@@ -224,5 +224,14 @@ public class ProblemSetsTest {
 		int actual = pSets.sumOfPrimeFactorsPowers(number);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void metaStringTest() {
+		ProblemSets pSets = new ProblemSets();
+		String s1 = "geeks";
+		String s2 = "keegs";
+		assertEquals(true, pSets.metaStrings(s1, s2));
+		assertEquals(false, pSets.metaStrings(s1, s1));
+	}
 
 }
