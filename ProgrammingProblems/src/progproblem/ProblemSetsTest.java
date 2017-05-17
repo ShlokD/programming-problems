@@ -233,5 +233,12 @@ public class ProblemSetsTest {
 		assertEquals(true, pSets.metaStrings(s1, s2));
 		assertEquals(false, pSets.metaStrings(s1, s1));
 	}
+	
+	@Test
+	public void uniqueCharacterTest() {
+		ProblemSets pSets = new ProblemSets();
+		assertEquals(false, pSets.checkUnique("banana"));
+		assertEquals(true, pSets.checkUnique("method"));
+	}
 
 }

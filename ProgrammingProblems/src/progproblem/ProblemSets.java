@@ -496,4 +496,16 @@ public class ProblemSets {
 		
 		return mismatch == 2 && s1.charAt(prev) == s2.charAt(next) && s1.charAt(next) == s2.charAt(prev);
 	}
+	
+	public boolean checkUnique(String s) {
+		boolean result = false;
+		for(char c: s.toCharArray()) {
+			if(s.indexOf(c) == s.lastIndexOf(c)) {
+				result = true;
+			} else {
+				result = false;
+			}
+		}
+		return result;
+	}
 }
